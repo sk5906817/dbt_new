@@ -19,3 +19,20 @@ models:
         data_tests:
           - unique
           - not_null
+  - name: snowflake_customer_purchases
+    description: "Snowflake purchases"
+    columns:
+      - name: c_custkey
+        description: "The primary key of this table"
+        data_tests:
+          - unique
+          - not_null
+  - name: cumulative_orders_by_date
+    description: "Cumulative orders by date"
+    columns:
+      - name: c_custkey
+        data_tests:
+        - unique
+        - not_null
+  - name: dates
+
