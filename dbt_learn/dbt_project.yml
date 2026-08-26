@@ -23,6 +23,8 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 
+
+
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -31,6 +33,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_learn:
+    post_hook: 
+      - 'grant usage on schema {{ target.this }} to role analytics'
+      - 'grant select on {{ this }} to role analytics'
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: table
@@ -38,3 +43,4 @@ vars:
   my_first_variable: True
   my_second_variable: 2020
   my_third_variable: 1
+
